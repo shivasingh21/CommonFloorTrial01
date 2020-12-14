@@ -1,4 +1,37 @@
 <h1>ALL Properties</h1>
-<% @property.each do |property| %>
-  <p> <%= property.Location %></p>
-<% end %>
+
+  <table>
+    <thead>
+      <th>Property Type</th>
+      <th>Property Status</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Price</th>
+      <th>Area</th>
+      <th>Owner Name</th>
+      <th>Contact person</th>
+      <th>Number</th>
+      <th colspan=3 >Links</th>
+
+    </thead>
+
+    <tbody>
+      <% @property.each do |property| %>
+      <tr>
+
+        <td><%= property.PropertyType %></td>
+        <td><%= property.property_status %></td>
+        <td><%= property.address %></td>
+        <td><%= property.city %></td>
+        <td><%= property.Price %></td>
+        <td><%= property.Area %></td>
+        <td><%= property.OwnerName %></td>
+        <td><%= property.ContactPerson %></td>
+        <td><%= property.Number %></td>
+        <td><%= link_to 'Show',property_path(property)%></td>
+      
+
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
