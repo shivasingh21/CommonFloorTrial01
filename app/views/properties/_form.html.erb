@@ -35,7 +35,15 @@
    <%= form.label :Number %><br>
    <%= form.text_field :Number %>
   </div>
-
+  <% if @property.property_image.attached? %>
+    <%= image_tag(@property.property_image, width: 400, height: 400)%>
+  <% end %>
+  <br/>
+  <br/>
+  <div>
+   <%= form.label :property_image %><br>
+   <%= form.file_field :property_image %>
+  </div>
   <div>
     <%= form.submit @property.new_record? ? 'SAVE' : 'UPDATE'%>
   </div>

@@ -1,2 +1,5 @@
 <h1>SHOW</h1>
 <%= @property.PropertyType%>
+<% if @property.property_image.attached? %>
+  <%= image_tag(@property.property_image, width: 400, height: 400)%>
+<% end %>
