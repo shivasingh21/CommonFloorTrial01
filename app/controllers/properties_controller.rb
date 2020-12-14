@@ -11,6 +11,19 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
   end
 
+  def edit
+    @property = Property.find(params[:id])
+  end
+
+  def update
+    @property = Property.find(params[:id])
+    if @property.update(property_params)
+      redirect_to @property
+    else
+      render 'edit'
+    end
+  end
+
   def create
     @property = Property.new(property_params)
     @property.user = User.first
@@ -23,6 +36,6 @@ class PropertiesController < ApplicationController
 
   private
     def property_params
-      params.require(:property).permit(:PropertyType, :Location, :Price, :Area, :OwnerName, :ContactPerson, :Number)
+      params.require(:property).permit(:PropertyType, :property_status, :address, :city, :Price, :Area, :OwnerName, :ContactPerson, :Number)
     end
 end

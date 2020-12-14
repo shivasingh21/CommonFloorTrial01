@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_13_085415) do
+ActiveRecord::Schema.define(version: 2020_12_14_132730) do
 
   create_table "properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "PropertyType"
-    t.string "Location"
+    t.string "address"
     t.float "Price"
     t.float "Area"
     t.string "OwnerName"
@@ -23,6 +23,10 @@ ActiveRecord::Schema.define(version: 2020_12_13_085415) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "city"
+    t.string "property_status"
+    t.boolean "approved_status", default: false
+    t.string "rejection_reason"
     t.index ["user_id"], name: "index_properties_on_user_id"
   end
 
