@@ -1,21 +1,22 @@
 class UsersController < ApplicationController
-
+  before_action :set_user, only: [:show, :edit, :update]
   def new
     @user = User.new
   end
 
 
   def edit
-    @user = User.find(params[:id])
+
   end
 
   def show
-    @user = User.find(params[:id])
+
   end
-  
+
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       flash[:notice] = "BOOYAH #{@user.username}"
       redirect_to properties_path
     else
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+
     if @user.update(user_params)
       flash[:notice] = 'ACCOUNT IS UPDATED'
       redirect_to properties_path
@@ -36,5 +37,8 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:username, :email, :password)
+  end
+  def set_user
+      @user = User.find(params[:id])
   end
 end
