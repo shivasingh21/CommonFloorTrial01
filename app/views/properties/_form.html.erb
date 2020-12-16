@@ -1,7 +1,7 @@
 <%= form_with(model: @property, local: true) do |form| %>
   <div>
    <%= form.label :PropertyType %><br>
-   <%= form.select :PropertyType, [ 'Cell', 'Work', 'Office', 'Home', 'Other' ], :prompt => 'Select One' %>
+   <%= form.select :PropertyType, [ 'Apartment', 'Office', 'Hotel', 'Plot', 'Bungalow', 'House' ], :prompt => 'Select One' %>
   </div>
   <div>
    <%= form.label :property_status %><br>
@@ -35,8 +35,10 @@
    <%= form.label :Number %><br>
    <%= form.text_field :Number %>
   </div>
-  <% if @property.property_image.attached? %>
-    <%= image_tag(@property.property_image, width: 400, height: 400)%>
+  <% if current_page?(controller: 'properties', action: 'edit', id: current_user.id) %>
+    <% if @property.property_image.attached? %>
+      <%= image_tag(@property.property_image, width: 400, height: 400)%>
+    <% end %>
   <% end %>
   <br/>
   <br/>
