@@ -1,15 +1,4 @@
-<div class="ui inverted menu">
-  <a class="active item">
-    Home
-  </a>
-  <a class="item">
-    Messages
-  </a>
-  <a class="item">
-    Friends
-  </a>
-</div>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <%= link_to image_tag("icon.png", size: "90x40", alt: "Edit Entry"), root_path, class: "navbar-brand"%>
     <!-- <a class="navbar-brand" href="#">Navbar</a> -->
@@ -21,8 +10,11 @@
         <li class="nav-item active">
           <%= link_to 'Home', root_path, class:'nav-link'%>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+        <li class="nav-item active">
+          <%= link_to 'All Properties', properties_path, class:'nav-link'%>
+        </li>
+        <li class="nav-item active">
+          <%= link_to 'Post property', new_property_path, class:'nav-link'%>
         </li>
         <li class="nav-item dropdown ">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

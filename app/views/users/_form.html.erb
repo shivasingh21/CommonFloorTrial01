@@ -1,17 +1,18 @@
-<%= form_with(model: @user, local: true) do |form| %>
-  <div>
-    <p><%= form.label :username%></p>
-    <p><%= form.text_field :username%></p>
+
+
+<%= form_with(model: @user, html: {class: "ui form"}, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :username, "Username"%>
+    <%= form.text_field :username, placeholder: "Username", class: "border border-success"%>
   </div>
-  <div>
-    <p><%= form.label :email%></p>
-    <p><%= form.email_field :email%></p>
+  <div class="field">
+    <%= form.label :email, "Email"%>
+    <%= form.email_field :email, placeholder: "Email", class: "border border-success"%>
+
   </div>
-  <div>
-    <p><%= form.label :password%></p>
-    <p><%= form.password_field :password%></p>
+  <div class="field">
+    <%= form.label :password, "Password"%>
+    <%= form.password_field :password, placeholder: "Password", class: "border border-success"%>
   </div>
-  <div>
-    <%= form.submit @user.new_record? ? 'SIGN UP' : 'UPDATE'%>
-  </div>
+  <%= form.submit @user.new_record? ? 'SIGN UP' : 'UPDATE', class: "ui button green"%>
 <% end %>

@@ -1,37 +1,29 @@
-<h1>ALL Properties</h1>
-
-  <table>
-    <thead>
-      <th>Property Type</th>
-      <th>Property Status</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>Price</th>
-      <th>Area</th>
-      <th>Owner Name</th>
-      <th>Contact person</th>
-      <th>Number</th>
-      <th colspan=3 >Links</th>
-
-    </thead>
-
-    <tbody>
-      <% @property.each do |property| %>
-      <tr>
-
-        <td><%= property.PropertyType %></td>
-        <td><%= property.property_status %></td>
-        <td><%= property.address %></td>
-        <td><%= property.city %></td>
-        <td><%= property.Price %></td>
-        <td><%= property.Area %></td>
-        <td><%= property.OwnerName %></td>
-        <td><%= property.ContactPerson %></td>
-        <td><%= property.Number %></td>
-        <td><%= link_to 'Show',property_path(property)%></td>
-      
-
-      </tr>
+<h1 class="text-center">All Properties</h1>
+<div class="ui divided items">
+<% @property.each do |property| %>
+  <div class="item">
+    <div class="image">
+      <% if property.property_image.attached? %>
+        <%= image_tag(property.property_image)%>
       <% end %>
-    </tbody>
-  </table>
+    </div>
+    <div class="content">
+      <%= link_to property.PropertyType, property, class: "header" %>
+      <div class="meta">
+        <span class="home">By <%= property.OwnerName %></span><br/>
+        <span class="home">Posted <%= time_ago_in_words(property.created_at) %></span>
+      </div>
+      <div class="description">
+        <p></p>
+      </div>
+      <div class="extra">
+        <div class="ui label"><i class="home icon"></i><%= property.property_status%></div>
+        <span class="home text-dark"><i class="rupee sign icon green"></i><%= property.Price%></span>
+        <div class="ui right floated primary button">
+          <%= link_to "Show Details", property ,class: "text-white"%>
+          <i class="right chevron icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

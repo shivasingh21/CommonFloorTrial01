@@ -1,52 +1,77 @@
-<%= form_with(model: @property, local: true) do |form| %>
-  <div>
-   <%= form.label :PropertyType %><br>
-   <%= form.select :PropertyType, [ 'Apartment', 'Office', 'Hotel', 'Plot', 'Bungalow', 'House' ], :prompt => 'Select One' %>
+
+<%= form_with(model: @property, html: {class: "ui large form"}, local: true) do |form| %>
+  <h4 class="ui dividing header">Property Information</h4>
+  <div class="two fields">
+    <div class="field">
+      <%= form.label :PropertyType, "Property Type" %>
+      <%= form.select :PropertyType, [ 'Apartment', 'Office', 'Hotel', 'Plot', 'Bungalow', 'House' ], :prompt => 'Property Type',class: "ui fluid dropdown" %>
+    </div>
+    <div class="field">
+      <%= form.label :property_status, "Property Status" %>
+      <%= form.select :property_status, [ 'Rental', 'Sold', 'Sale' ], :prompt => 'Property Status',class: "ui fluid dropdown" %>
+    </div>
   </div>
-  <div>
-   <%= form.label :property_status %><br>
-   <%= form.select :property_status, [ 'Rental', 'Sold', 'Sale' ], :prompt => 'Select One' %>
+
+  <div class="field">
+    <label> <%= form.label :address, "Address" %></label>
+    <div class="fields">
+      <div class="twelve wide field">
+         <%= form.text_field :address, placeholder: "Address", class: "border border-success" %>
+      </div>
+    </div>
   </div>
-  <div>
-   <%= form.label :address %><br>
-   <%= form.text_field :address %>
+  <div class="field">
+    <label><%= form.label :OwnerName, "Owner Name" %></label>
+    <div class="fields">
+      <div class="twelve wide field">
+        <%= form.text_field :OwnerName, placeholder: "Owner Name", class: "border border-success" %>
+      </div>
+    </div>
   </div>
-  <div>
-   <%= form.label :city %><br>
-   <%= form.text_field :city %>
+  <div class="field">
+    <label><%= form.label :city, "City" %></label>
+    <div class="fields">
+      <div class="twelve wide field">
+         <%= form.text_field :city, placeholder: "City", class: "border border-success" %>
+      </div>
+    </div>
   </div>
-  <div>
-   <%= form.label :Price %><br>
-   <%= form.text_field :Price %>
+  <div class="field">
+    <label><%= form.label :Price, "Price" %></label>
+    <div class="fields">
+      <div class="twelve wide field">
+        <%= form.text_field :Price, placeholder: "Amount in INR (eg. 12000 )", class: "border border-success" %>
+       </div>
+    </div>
   </div>
-  <div>
-   <%= form.label :Area %><br>
-   <%= form.text_field :Area %>
+  <div class="field">
+    <label> <%= form.label :Area, "Area" %></label>
+    <div class="fields">
+      <div class="twelve wide field">
+        <%= form.text_field :Area, placeholder: "Area in sqft", class: "border border-success" %>
+      </div>
+    </div>
   </div>
-  <div>
-   <%= form.label :OwnerName %><br>
-   <%= form.text_field :OwnerName %>
+  <div class="field">
+    <label> <%= form.label :ContactPerson, "Contact Person" %></label>
+    <div class="fields">
+      <div class="twelve wide field">
+         <%= form.text_field :ContactPerson,placeholder: "Contact Person", class: "border border-success" %>
+      </div>
+    </div>
   </div>
-  <div>
-   <%= form.label :ContactPerson %><br>
-   <%= form.text_field :ContactPerson %>
+  <div class="field">
+    <label> <%= form.label :Number, "Contact Number" %></label>
+    <div class="fields">
+      <div class="twelve wide field">
+        <%= form.text_field :Number,placeholder: "Number without 0 or +91 (eg. 89xxxxxxxx )", class: "border border-success" %>
+      </div>
+    </div>
   </div>
-  <div>
-   <%= form.label :Number %><br>
-   <%= form.text_field :Number %>
+  <div class="field">
+    <label><%= form.label :property_image, "Property Image" %></label>
+    <%= form.file_field :property_image, class: "border border-success ui button" %>
   </div>
-  <% if current_page?(controller: 'properties', action: 'edit', id: current_user.id) %>
-    <% if @property.property_image.attached? %>
-      <%= image_tag(@property.property_image, width: 400, height: 400)%>
-    <% end %>
-  <% end %>
-  <br/>
-  <br/>
-  <div>
-   <%= form.label :property_image %><br>
-   <%= form.file_field :property_image %>
-  </div>
-  <div>
-    <%= form.submit @property.new_record? ? 'SAVE' : 'UPDATE'%>
-  </div>
+
+  <%= form.submit @property.new_record? ? 'SAVE' : 'UPDATE', class: "ui green button"%>
 <% end %>
