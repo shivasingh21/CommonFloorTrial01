@@ -32,3 +32,29 @@
     </tr>
   </tbody>
 </table>
+<h2>Reviews</h2>
+<% @property.reviews.each do |review| %>
+  <p>
+    <strong>Ratings:</strong>
+    <%= review.rating %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= review.comment %>
+  </p>
+<% end %>
+<h2>Add a comment:</h2>
+<%= form_with model: [ @property, @property.reviews.build ], local: true do |form| %>
+  <p>
+    <%= form.label :rating %><br>
+    <%= form.text_field :rating %>
+  </p>
+  <p>
+    <%= form.label :comment %><br>
+    <%= form.text_area :comment %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

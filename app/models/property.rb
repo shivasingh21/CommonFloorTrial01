@@ -1,6 +1,7 @@
 class Property < ApplicationRecord
   belongs_to :user
   has_one_attached :property_image
+  has_many :reviews
 
   after_validation { self.city = self.city.upcase }
 
