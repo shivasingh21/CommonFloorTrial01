@@ -9,6 +9,7 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
+    @favourite_exists = Favourite.where(property: @property,user: current_user) == [] ? false : true
   end
 
   def edit

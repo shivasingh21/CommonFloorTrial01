@@ -4,6 +4,7 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
 
   has_many :properties, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   after_validation { self.email = self.email.downcase }
 

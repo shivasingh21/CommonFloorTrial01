@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'favourites/update'
   root 'home#index'
 
   resources :properties do

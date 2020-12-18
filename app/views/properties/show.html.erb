@@ -32,6 +32,10 @@
     </tr>
   </tbody>
 </table>
+<%= link_to favourite_text, favourites_update_path(property: @property), id: 'favourite_link'%>
+<% if @favourite_exists == true %>
+  <p>Favourite Exists</p>
+<% end %>
 <h2>Reviews</h2>
 <% @property.reviews.each do |review| %>
   <p>
