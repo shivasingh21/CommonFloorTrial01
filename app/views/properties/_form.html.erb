@@ -4,7 +4,7 @@
   <div class="two fields">
     <div class="field">
       <%= form.label :PropertyType, "Property Type" %>
-      <%= form.select :PropertyType, [ 'Apartment', 'Office', 'Hotel', 'Plot', 'Bungalow', 'House' ], :prompt => 'Property Type',class: "ui fluid dropdown" %>
+      <%= form.select :PropertyType, options_from_collection_for_select(Category.all, :name, :name, form.object.PropertyType), :prompt => 'Property Type',class: "ui fluid dropdown" %>
     </div>
     <div class="field">
       <%= form.label :property_status, "Property Status" %>
