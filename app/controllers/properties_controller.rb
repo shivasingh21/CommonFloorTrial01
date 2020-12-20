@@ -1,12 +1,22 @@
 class PropertiesController < ApplicationController
   def index
-    @property = Property.all
+    if admin?
+      @property = Property.where(approved_status: 'false').order('created_at DESC')
+    else
+      @property = Property.where(approved_status: 'true')
+    end
   end
 
   def new
     @property = Property.new
   end
-
+  def approve
+    @property = Property.find(params[:id])
+    if @property.update(approved_status: "true")
+      flash[:notice] = "New property approved"
+      redirect_to properties_path
+    end
+  end
   def show
     @property = Property.find(params[:id])
     @favourite_exists = Favourite.where(property: @property,user: current_user) == [] ? false : true

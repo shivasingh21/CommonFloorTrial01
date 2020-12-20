@@ -10,12 +10,28 @@
         <li class="nav-item active">
           <%= link_to 'Home', root_path, class:'nav-link'%>
         </li>
-        <li class="nav-item active">
-          <%= link_to 'All Properties', properties_path, class:'nav-link'%>
-        </li>
-        <li class="nav-item active">
-          <%= link_to 'Post property', new_property_path, class:'nav-link'%>
-        </li>
+        <% if logged_in? %>
+          <li class="nav-item active">
+            <%= link_to 'All Properties', properties_path, class:'nav-link'%>
+          </li>
+          <% unless admin? %>
+            <li class="nav-item active">
+              <%= link_to 'Post property', new_property_path, class:'nav-link'%>
+            </li>
+          <% end %>
+        <% end %>
+        <% if admin? %>
+          <li class="nav-item active">
+            <%= link_to 'Approve Properties', new_category_path, class:'nav-link'%>
+          </li>
+          <li class="nav-item active">
+            <%= link_to 'All categories', categories_path, class:'nav-link'%>
+          </li>
+          <li class="nav-item active">
+            <%= link_to 'Add Category', new_category_path, class:'nav-link'%>
+          </li>
+
+        <% end %>
         <li class="nav-item dropdown ">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Account

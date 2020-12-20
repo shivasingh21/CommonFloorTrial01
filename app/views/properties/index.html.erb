@@ -19,8 +19,13 @@
       <div class="extra">
         <div class="ui label"><i class="home icon"></i><%= property.property_status%></div>
         <span class="home text-dark"><i class="rupee sign icon green"></i><%= property.Price%></span>
+
         <div class="ui right floated primary button">
           <%= link_to "Show Details", property ,class: "text-white"%>
+          <i class="right chevron icon"></i>
+        </div>
+        <div class="ui right floated primary button">
+          <%= link_to "Approve", approve_property_path(property) ,class: "text-white"%>
           <i class="right chevron icon"></i>
         </div>
       </div>
